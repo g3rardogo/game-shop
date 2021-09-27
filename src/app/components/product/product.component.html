@@ -2,4 +2,4 @@
 <img [src]="product.image" alt="" />
 <strong>{{ product.price | currency }}</strong>
 <p>{{ product.description | slice: 0:5 }}</p>
-<button (click)="addCart()">Agregar al carrito</button>
+<a [routerLink]="['/products', product.id]">Ver detalle</a>
