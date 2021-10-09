@@ -1,7 +1,13 @@
 export interface Product {
   id: string;
   title: string;
-  price: number;
-  description: string;
-  image: string;
+  thumbnail: string;
+  short_description: string;
+  game_url: string;
+  genre: string;
+  platform: string;
+  publisher: string;
+  developer: string;
+  release_date: string;
+  freetogame_profile_url: string;
 }

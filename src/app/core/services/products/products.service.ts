@@ -1,62 +1,20 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Product } from '../../models/product.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  products: Product[] = [
-    {
-      id: '1',
-      image: 'assets/images/cyberpunk.jpg',
-      title: 'Cyberpunk',
-      price: 80000,
-      description: 'bla bla bla bla bla',
-    },
-    {
-      id: '2',
-      image: 'assets/images/dead-space.jpg',
-      title: 'Dead Space',
-      price: 80000,
-      description: 'bla bla bla bla bla',
-    },
-    {
-      id: '3',
-      image: 'assets/images/destiny.png',
-      title: 'Destiny',
-      price: 80000,
-      description: 'bla bla bla bla bla',
-    },
-    {
-      id: '4',
-      image: 'assets/images/fifa-21.jpg',
-      title: 'FIFA 21',
-      price: 80000,
-      description: 'bla bla bla bla bla',
-    },
-    {
-      id: '5',
-      image: 'assets/images/mortal-kombat.jpg',
-      title: 'Mortal Kombat',
-      price: 80000,
-      description: 'bla bla bla bla bla',
-    },
-    {
-      id: '6',
-      image: 'assets/images/spiderman.jpg',
-      title: 'Spider-Man',
-      price: 80000,
-      description: 'bla bla bla bla bla',
-    },
-  ];
-
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getAllProducts() {
-    return this.products;
+    return this.http.get<Product[]>(
+      'https://free-to-play-games-database.p.rapidapi.com/api/games?rapidapi-key=51aa869b86mshac1babc9b43eb28p145dacjsn9c4b4c1d4a54'
+    );
   }
 
   getProduct(id: string) {
-    return this.products.find((item) => id === item.id);
+    return this.http.get(`https://www.freetogame.com/api/game?id=${id}`);
   }
 }
