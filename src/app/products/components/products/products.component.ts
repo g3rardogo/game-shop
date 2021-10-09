@@ -24,7 +24,6 @@ export class ProductsComponent implements OnInit {
       const productsResponse: Product[] = products;
       const response = productsResponse.slice(0, 6);
       this.products = response;
-      console.log(this.products);
     });
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../../models/product.model';
-
+import { environment } from '../../../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
@@ -10,11 +10,13 @@ export class ProductsService {
 
   getAllProducts() {
     return this.http.get<Product[]>(
-      'https://free-to-play-games-database.p.rapidapi.com/api/games?rapidapi-key=51aa869b86mshac1babc9b43eb28p145dacjsn9c4b4c1d4a54'
+      `${environment.url_api}games?${environment.key_api}`
     );
   }
 
   getProduct(id: string) {
-    return this.http.get(`https://www.freetogame.com/api/game?id=${id}`);
+    return this.http.get<Product>(
+      `${environment.url_api}game?id=${id}&${environment.key_api}`
+    );
   }
 }
